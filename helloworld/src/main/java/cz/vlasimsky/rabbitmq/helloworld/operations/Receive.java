@@ -33,7 +33,7 @@ public class Receive {
                 }
             }
         };
-        boolean autoAck = true;
+        boolean autoAck = false;
         channel.basicConsume(QUEUE_NAME, autoAck, consumer);
 
 
