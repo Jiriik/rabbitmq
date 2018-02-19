@@ -19,10 +19,10 @@ public class Send {
         Channel channel = connection.createChannel();
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
         Thread.sleep(2000);
-        for (int i = 1; i <= 1000000 ; i++) {
+        for (int i = 1; i <= 1000 ; i++) {
             final String message = "Hello World! - " + i;
             channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
-            //System.out.println("[x] Sent '" + message + "'" );
+            System.out.println("[x] Sent '" + message + "'" );
            // Thread.sleep(100);
         }
         System.out.println("DONE");
