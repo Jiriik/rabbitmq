@@ -14,8 +14,10 @@ public class Receive {
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-        channel.basicQos(1);
+        boolean durable = false;
+        channel.queueDeclare(QUEUE_NAME, durable, false, false, null);
+        int prefetchCount = 1; //number of messages to be fetched from the server
+        channel.basicQos(prefetchCount);
         System.out.println("[x] Waiting for messages. To exit pres CTRL+C.");
 
         Consumer consumer = new DefaultConsumer(channel) {
